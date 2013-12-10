@@ -9,7 +9,11 @@ That's it.
 
 ## Installation
 
-1. Ensure Ruby is installed correctly. The commands 'ruby', 'irb', and 'gem' should be on your system.
+1. Ensure Ruby is installed correctly. The commands 'ruby', 'irb', and 'gem' should be on your system:
+
+        ruby -v
+        ruby 2.0.0p353 (2013-11-22 revision 43784) [x86_64-darwin13.0.0]
+
 2. Ensure the popular package managing gem 'Bundler' is installed:
 
         gem list bundler
