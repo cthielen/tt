@@ -1,6 +1,8 @@
-require "tt/version"
+# require 'bundler'
+# 
+# Bundler.require(:default)
 
-Bundler.require(:default)
+require 'tt/version'
 
 module Tt
   TT_DIR = ENV['TT_DIR'] ? ENV['TT_DIR'] : "#{Dir.home}/.tt/"
