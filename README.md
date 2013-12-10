@@ -28,6 +28,9 @@ That's it.
 
         bundle install
 
+   If the dependencies fail to install, read the output. tt uses sqlite3 (I know) so you need to
+   ensure sqlite3's development files are installed.
+
 4. Build and install the gem to your system:
 
         rake install
