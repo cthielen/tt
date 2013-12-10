@@ -11,9 +11,9 @@ That's it.
 
 1. Ensure Ruby is installed correctly. The commands 'ruby', 'irb', and 'gem' should be on your system.
 2. Ensure the popular package managing gem 'Bundler' is installed:
-  
+
     gem list bundler
-    
+
 should return something like 'bundler (1.3.5)'. If the word 'bundler' does not appear, type
 
     gem install bundler
