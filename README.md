@@ -35,7 +35,11 @@ That's it.
 
         rake install
 
-5. You should now have the 'tt' command.
+5. You should now have the 'tt' command. If you do not, you're probably missing Ruby's gem binary
+   folder from your PATH. Something like the following should help you discover what's missing from
+   your PATH:
+
+        gem env | grep "EXECUTABLE DIRECTORY"
 
 ## Usage
 
