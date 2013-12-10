@@ -5,7 +5,7 @@ Bundler.require(:default)
 module Tt
   TT_DIR = ENV['TT_DIR'] ? ENV['TT_DIR'] : "#{Dir.home}/.tt/"
 
-  # Ensure rdvr data directory exists
+  # Ensure data directory exists
   `mkdir #{TT_DIR} >& /dev/null`
   
   # duration - in seconds
