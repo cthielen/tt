@@ -25,8 +25,11 @@ case ARGV[0]
     exit
   when 'ls'
     Slip.where(:stop => nil).each do |s|
+      total_time, num_valid_slips = Tt::count_slips(s.timesheet)
+      
+      total_time_str = num_valid_slips ? " (+#{Tt::readable_time(total_time)} on #{num_valid_slips} completed slips)" : ""
       desc = s.timesheet.description ? " (#{s.timesheet.description})" : ""
-      puts "#{Tt::readable_time(Time.now - s.start)} on timesheet #{s.timesheet.id}#{desc}"
+      puts "#{Tt::readable_time(Time.now - s.start)} on timesheet #{s.timesheet.id}#{desc}#{total_time_str}"
     end
     if Slip.where(:stop => nil).count == 0
       puts "No open slips."
@@ -64,7 +67,10 @@ case ARGV[0]
     s.stop = Time.now
     s.save
     
-    puts "Finished slip with #{Tt::readable_time(s.stop - s.start)} for timesheet #{ts.id}"
+    ts.reload
+    
+    total_time, num_valid_slips = Tt::count_slips(ts)
+    puts "Finished slip with #{Tt::readable_time(s.stop - s.start)} for timesheet #{ts.id}. Total #{Tt::readable_time(total_time)}."
     exit
   when 'desc'
     if ARGV[1]
@@ -86,7 +92,7 @@ case ARGV[0]
       total_time, num_valid_slips = Tt::count_slips(t)
       
       desc = t.description ? " (#{t.description})" : ""
-      puts "#{Tt::readable_time(total_time)} across #{num_valid_slips} slips on timesheet #{t.id}#{desc}"
+      puts "#{Tt::readable_time(total_time)} on #{num_valid_slips} slip(s) on timesheet #{t.id}#{desc}"
     end
     if Timesheet.count == 0
       puts "No timesheets."

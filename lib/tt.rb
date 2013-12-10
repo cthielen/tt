@@ -11,10 +11,10 @@ module Tt
   # duration - in seconds
   def self.readable_time(duration)
     if duration < 60
-      return "#{duration.to_i} seconds"
+      return "#{duration.to_i}s"
     end
     if duration < 3600
-      return "#{(duration / 60).to_i} minutes #{(duration % 60).to_i} seconds"
+      return "#{(duration / 60).to_i}m #{(duration % 60).to_i}s"
     end
   end
   
