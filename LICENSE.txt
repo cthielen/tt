@@ -1,7 +1,3 @@
-The following license applies to original RDVR ("Radio DVR") code.
-The included source code for id3tool and fIcy are goverened by their own
-licenses, which may be found in tools/id3tool/ and tools/fIcy/ respectively.
-
 Copyright (c) 2013 Christopher Thielen
 
 MIT License
