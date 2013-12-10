@@ -37,6 +37,7 @@ See 'tt help' for usage instructions. Here's a scenario:
 We want to track time before lunch, stop for lunch, then continue after.
 
 Around 8:00am we type:
+
     tt start
     
     Started slip at 2013-12-09 08:00:00 -0800 for timesheet 4
@@ -74,8 +75,8 @@ And let's see what we did today:
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+1. Fork it.
+2. Create your feature branch (`git checkout -b my-new-feature`).
+3. Commit your changes (`git commit -am 'Add some feature'`).
+4. Push to the branch (`git push origin my-new-feature`).
+5. Create a new pull request.
