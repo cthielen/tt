@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rdvr.gemspec
+# Additional dependencies in tt.gemspec
 gemspec
