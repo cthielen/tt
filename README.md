@@ -12,21 +12,21 @@ That's it.
 1. Ensure Ruby is installed correctly. The commands 'ruby', 'irb', and 'gem' should be on your system.
 2. Ensure the popular package managing gem 'Bundler' is installed:
 
-     gem list bundler
+       gem list bundler
 
    should return something like 'bundler (1.3.5)'. If the word 'bundler' does not appear, type
 
-     gem install bundler
+       gem install bundler
 
    to install Bundler.
 
 3. Install tt's dependencies via Bundler:
 
-     bundle install
+       bundle install
 
 4. Build and install the gem to your system:
 
-     rake install
+       rake install
 
 5. You should now have the 'tt' command.
 
