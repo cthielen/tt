@@ -12,11 +12,20 @@ module Tt
   
   # duration - in seconds
   def self.readable_time(duration)
-    if duration < 60
-      return "#{duration.to_i}s"
-    end
-    if duration < 3600
-      return "#{(duration / 60).to_i}m #{(duration % 60).to_i}s"
+    # Credit: http://stackoverflow.com/questions/1679266/can-ruby-print-out-time-difference-duration-readily
+    secs  = duration.to_int
+    mins  = secs / 60
+    hours = mins / 60
+    days  = hours / 24
+
+    if days > 0
+      return "#{days}d #{hours % 24}h"
+    elsif hours > 0
+      return "#{hours}h #{mins % 60}m"
+    elsif mins > 0
+      return "#{mins}m #{secs % 60}s"
+    elsif secs >= 0
+      return "#{secs}s"
     end
   end
   
