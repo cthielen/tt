@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Tt::VERSION
   spec.authors       = ["Christopher Thielen"]
   spec.email         = ["cthielen@gmail.com"]
-  spec.description   = %q{Write a gem description}
-  spec.summary       = %q{Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{tt is a simple CLI time-tracker.}
+  spec.summary       = %q{tt is a simple time-tracker.}
+  spec.homepage      = "http://christopher.thielen.co/projects/tt"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -22,5 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "sqlite3", "~> 1.3"
 
   spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rake", "~> 0"
 end
