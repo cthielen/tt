@@ -11,6 +11,7 @@ def print_help
   puts "\tstart <N>     - start recording and use timesheet with ID N (creates a timesheet without N)"
   puts "\tstop <N>      - stop recording timesheet with ID N (defaults to most recent timesheet without N)"
   puts "\tdesc N <desc> - write a description for timesheet N"
+  puts "\thelp          - display this help message"
   puts "\t<no command>  - show currently running timesheets"
 end
 
@@ -24,16 +25,7 @@ case ARGV[0]
     print_help
     exit
   when 'ls'
-    Slip.where(:stop => nil).each do |s|
-      total_time, num_valid_slips = Tt::count_slips(s.timesheet)
-      
-      total_time_str = num_valid_slips ? " (+#{Tt::readable_time(total_time)} on #{num_valid_slips} completed slips)" : ""
-      desc = s.timesheet.description ? " (#{s.timesheet.description})" : ""
-      puts "#{Tt::readable_time(Time.now - s.start)} on timesheet #{s.timesheet.id}#{desc}#{total_time_str}"
-    end
-    if Slip.where(:stop => nil).count == 0
-      puts "No open slips."
-    end
+    Tt::ttr_ls
     exit
   when 'start'
     if ARGV[1]
