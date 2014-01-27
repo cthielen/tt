@@ -1,0 +1,5 @@
+2014-01-27 Christopher Thielen:
+  * Began ChangeLog
+  * Added 'resume' command
+  * Abstracted 'ls' and 'start' into methods for reuse
+  * Bumped version to 0.3

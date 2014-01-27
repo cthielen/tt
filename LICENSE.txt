@@ -1,4 +1,4 @@
-Copyright (c) 2013 Christopher Thielen
+Copyright (c) 2013-2014 Christopher Thielen
 
 MIT License
 

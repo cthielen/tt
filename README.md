@@ -1,6 +1,6 @@
 # tt ("Time Tracker")
 
-tt is a simple command line time tracker.
+tt (binary 'ttr') is a simple command line time tracker.
 
 It organizes time into slips which are placed in timesheets. Timesheets
 optionally have a description.
@@ -43,44 +43,44 @@ That's it.
 
 ## Usage
 
-See 'tt help' for usage instructions. Here's a scenario:
+See 'ttr help' for usage instructions. Here's a scenario:
 
 We want to track time before lunch, stop for lunch, then continue after.
 
 Around 8:00am we type:
 
-    tt start
+    ttr start
     
     Started slip at 2013-12-09 08:00:00 -0800 for timesheet 4
 
-The command returned an ID of '4'. We'll use that. If we forget it, we can always type 'tt ls' to see
+The command returned an ID of '4'. We'll use that. If we forget it, we can always type 'ttr ls' to see
 currently open slips.
 
 We'll label this timesheet as 'Monday work':
 
-    tt desc 4 'Monday work'
+    ttr desc 4 'Monday work'
 
 Around noon, we stop working:
 
-    tt stop
+    ttr stop
     
     Finished slip with 4h 0m 0s for timesheet 4. Total 4h 0m 0s.
 
 After lunch, we'll start another slip on the same timesheet:
 
-    tt start 4
+    ttr start 4
     
     Started slip at 2013-12-09 13:00:00 -0800 for timesheet 4
 
 At the end of the day:
 
-    tt stop
+    ttr stop
     
     Finished slip with 4h 0m 0s for timesheet 4. Total 8h 0m 0s.
 
 And let's see what we did today:
 
-    tt log
+    ttr log
     
     8h 0m 0s 2 slip(s) on timesheet 4 (Monday work)
 

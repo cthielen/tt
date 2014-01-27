@@ -10,17 +10,40 @@ def print_help
   puts "\tlog           - show timesheets with no currently running slips"
   puts "\tstart <N>     - start recording and use timesheet with ID N (creates a timesheet without N)"
   puts "\tstop <N>      - stop recording timesheet with ID N (defaults to most recent timesheet without N)"
+  puts "\tresume        - alias for 'start' using the most recently used timesheet"
   puts "\tdesc N <desc> - write a description for timesheet N"
   puts "\thelp          - display this help message"
   puts "\t<no command>  - show currently running timesheets"
 end
 
 unless ARGV.length >= 1
-  print_help
+  Tt::ttr_ls
   exit
 end
 
 case ARGV[0]
+  when 'resume'
+    # Exit if a slip is already open
+    if Slip.where(:stop => nil).first
+      puts "A slip is already running."
+      exit
+    end
+    
+    # Determine the most recently used timesheet
+    s = Slip.order("stop DESC").first
+    
+    unless s
+      puts "No slips exist in the database. Cannot determine any timesheet usage."
+      exit
+    end
+    
+    recent_timesheet_id = s.timesheet_id
+    
+    puts "Resuming timesheet #{s.timesheet.id} (#{s.timesheet.description})"
+    
+    Tt::ttr_start(recent_timesheet_id, true)
+    
+    exit
   when 'help'
     print_help
     exit
@@ -28,18 +51,7 @@ case ARGV[0]
     Tt::ttr_ls
     exit
   when 'start'
-    if ARGV[1]
-      ts = Timesheet.find_by_id(ARGV[1])
-    else
-      ts = Timesheet.create
-    end
-    
-    slip = Slip.create
-    slip.timesheet_id = ts.id
-    slip.start = Time.now
-    slip.save
-    
-    puts "Started slip at #{slip.start} for timesheet #{ts.id}"
+    Tt::ttr_start(ARGV[1])
     exit
   when 'stop'
     if ARGV[1]

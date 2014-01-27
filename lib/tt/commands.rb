@@ -11,4 +11,19 @@ module Tt
       puts "No open slips."
     end
   end
+  
+  def self.ttr_start(id, silence_output = false)
+    if id
+      ts = Timesheet.find_by_id(id)
+    else
+      ts = Timesheet.create
+    end
+    
+    slip = Slip.create
+    slip.timesheet_id = ts.id
+    slip.start = Time.now
+    slip.save
+    
+    puts "Started slip at #{slip.start} for timesheet #{ts.id}" unless silence_output
+  end
 end
