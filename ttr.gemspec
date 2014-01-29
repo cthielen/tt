@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'tt/version'
+require 'ttr/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "tt"
-  spec.version       = Tt::VERSION
+  spec.name          = "ttr"
+  spec.version       = Ttr::VERSION
   spec.authors       = ["Christopher Thielen"]
   spec.email         = ["cthielen@gmail.com"]
   spec.description   = %q{tt is a simple CLI time-tracker.}

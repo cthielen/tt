@@ -2,7 +2,7 @@
 
 # Time-tracker
 
-require 'tt'
+require 'ttr'
 
 def print_help
   puts "Usage: tt <command>\n\nValid commands:"
@@ -17,7 +17,7 @@ def print_help
 end
 
 unless ARGV.length >= 1
-  Tt::ttr_ls
+  Ttr::ttr_ls
   exit
 end
 
@@ -41,17 +41,17 @@ case ARGV[0]
     
     puts "Resuming timesheet #{s.timesheet.id} (#{s.timesheet.description})"
     
-    Tt::ttr_start(recent_timesheet_id, true)
+    Ttr::ttr_start(recent_timesheet_id, true)
     
     exit
   when 'help'
     print_help
     exit
   when 'ls'
-    Tt::ttr_ls
+    Ttr::ttr_ls
     exit
   when 'start'
-    Tt::ttr_start(ARGV[1])
+    Ttr::ttr_start(ARGV[1])
     exit
   when 'stop'
     if ARGV[1]
@@ -73,8 +73,8 @@ case ARGV[0]
     
     ts.reload
     
-    total_time, num_valid_slips = Tt::count_slips(ts)
-    puts "Finished slip with #{Tt::readable_time(s.stop - s.start)} for timesheet #{ts.id}. Total #{Tt::readable_time(total_time)}."
+    total_time, num_valid_slips = Ttr::count_slips(ts)
+    puts "Finished slip with #{Ttr::readable_time(s.stop - s.start)} for timesheet #{ts.id}. Total #{Ttr::readable_time(total_time)}."
     exit
   when 'desc'
     if ARGV[1]
@@ -93,10 +93,10 @@ case ARGV[0]
     end
   when 'log'
     Timesheet.all.each do |t|
-      total_time, num_valid_slips = Tt::count_slips(t)
+      total_time, num_valid_slips = Ttr::count_slips(t)
       
       desc = t.description ? " (#{t.description})" : ""
-      puts "#{Tt::readable_time(total_time)} on #{num_valid_slips} slip(s) on timesheet #{t.id}#{desc}"
+      puts "#{Ttr::readable_time(total_time)} on #{num_valid_slips} slip(s) on timesheet #{t.id}#{desc}"
     end
     if Timesheet.count == 0
       puts "No timesheets."

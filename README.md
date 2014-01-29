@@ -1,6 +1,6 @@
-# tt ("Time Tracker")
+# ttr ("Time Tracker")
 
-tt (binary 'ttr') is a simple command line time tracker.
+ttr is a simple command line time tracker.
 
 It organizes time into slips which are placed in timesheets. Timesheets
 optionally have a description.
@@ -28,7 +28,7 @@ That's it.
 
         bundle install
 
-   If the dependencies fail to install, read the output. tt uses sqlite3 (I know) so you need to
+   If the dependencies fail to install, read the output. ttr uses sqlite3 so you need to
    ensure sqlite3's development files are installed.
 
 4. Build and install the gem to your system:

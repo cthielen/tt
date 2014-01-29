@@ -2,13 +2,13 @@
 # 
 # Bundler.require(:default)
 
-require 'tt/version'
+require 'ttr/version'
 
-module Tt
-  TT_DIR = ENV['TT_DIR'] ? ENV['TT_DIR'] : "#{Dir.home}/.tt/"
+module Ttr
+  TTR_DIR = ENV['TTR_DIR'] ? ENV['TTR_DIR'] : "#{Dir.home}/.ttr/"
 
   # Ensure data directory exists
-  `mkdir #{TT_DIR} >& /dev/null`
+  `mkdir #{TTR_DIR} >& /dev/null`
   
   # duration - in seconds
   def self.readable_time(duration)
@@ -44,9 +44,9 @@ module Tt
 end
 
 # Load supporting code and models
-require "tt/database"
-require "tt/models/timesheet"
-require "tt/models/slip"
-require "tt/which.rb"
-require "tt/schema.rb"
-require "tt/commands.rb"
+require "ttr/database"
+require "ttr/models/timesheet"
+require "ttr/models/slip"
+require "ttr/which.rb"
+require "ttr/schema.rb"
+require "ttr/commands.rb"
