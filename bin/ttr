@@ -12,6 +12,7 @@ def print_help
   puts "\tstop <N>      - stop recording timesheet with ID N (defaults to most recent timesheet without N)"
   puts "\tresume        - alias for 'start' using the most recently used timesheet"
   puts "\tdesc N <desc> - write a description for timesheet N"
+  puts "\tcsv           - export all slips as CSV to STDOUT"
   puts "\thelp          - display this help message"
   puts "\t<no command>  - show currently running timesheets"
 end
@@ -102,6 +103,12 @@ case ARGV[0]
       puts "No timesheets."
     end
     
+    exit
+  when 'csv'
+    puts "slip_id,timesheet_id,timesheet_desc,start,duration"
+    Slip.all.each do |s|
+      puts "#{s.id},#{s.timesheet.id},#{s.timesheet.description},#{s.start},#{s.stop - s.start}"
+    end
     exit
   else
     puts "Unknown command.\n\n"

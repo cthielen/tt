@@ -21,11 +21,11 @@ module Ttr
     if days > 0
       return "#{days}d #{hours % 24}h"
     elsif hours > 0
-      return "#{hours}h #{mins % 60}m"
+      return "0d #{hours}h #{mins % 60}m"
     elsif mins > 0
-      return "#{mins}m #{secs % 60}s"
+      return "0d 0h #{mins}m #{secs % 60}s"
     elsif secs >= 0
-      return "#{secs}s"
+      return "0d 0h 0m #{secs}s"
     end
   end
   

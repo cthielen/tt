@@ -1,3 +1,7 @@
+2014-02-10 Christopher Thielen:
+  * Added 'csv' command
+  * Bumped version to 0.3.1
+
 2014-01-27 Christopher Thielen:
   * Began ChangeLog
   * Added 'resume' command
