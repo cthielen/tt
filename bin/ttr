@@ -8,6 +8,7 @@ def print_help
   puts "Usage: tt <command>\n\nValid commands:"
   puts "\tls            - show currently running timesheets"
   puts "\tlog           - show timesheets with no currently running slips"
+  puts "\ttoday         - show any timesheets from the last 24 hours"
   puts "\tstart <N>     - start recording and use timesheet with ID N (creates a timesheet without N)"
   puts "\tstop <N>      - stop recording timesheet with ID N (defaults to most recent timesheet without N)"
   puts "\tresume        - alias for 'start' using the most recently used timesheet"
@@ -92,12 +93,14 @@ case ARGV[0]
       puts "You must specify a description."
       exit
     end
+  when 'today'
+    Timesheet.joins(:slips).where("start > '#{Time.now - 24.hours}'").uniq.each do |t|
+      puts t.to_s
+    end
+    exit
   when 'log'
     Timesheet.all.each do |t|
-      total_time, num_valid_slips = Ttr::count_slips(t)
-      
-      desc = t.description ? " (#{t.description})" : ""
-      puts "#{Ttr::readable_time(total_time)} on #{num_valid_slips} slip(s) on timesheet #{t.id}#{desc}"
+      puts t.to_s
     end
     if Timesheet.count == 0
       puts "No timesheets."

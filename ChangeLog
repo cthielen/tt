@@ -1,3 +1,8 @@
+2014-02-12 Christopher Thielen:
+  * Added 'today' command. Similar to 'log' but only shows past 24 hours
+  * Added Ttr::DEBUG flag to enable debug output on STDOUT. Currently only sets up ActiveRecord debugging
+  * Bumped version to 0.3.2
+
 2014-02-10 Christopher Thielen:
   * Added 'csv' command
   * Bumped version to 0.3.1

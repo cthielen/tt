@@ -6,6 +6,7 @@ require 'ttr/version'
 
 module Ttr
   TTR_DIR = ENV['TTR_DIR'] ? ENV['TTR_DIR'] : "#{Dir.home}/.ttr/"
+  TTR_DEBUG = false
 
   # Ensure data directory exists
   `mkdir #{TTR_DIR} >& /dev/null`
