@@ -61,12 +61,13 @@ case ARGV[0]
     else
       # No timesheet ID specified. Use last opened slip if available.
       s = Slip.where(:stop => nil).first
-      ts = s.timesheet
       unless s
         puts "Couldn't find any open slips to stop."
         exit
       end
     end
+    
+    ts = s.timesheet
     
     s = ts.slips.where(:stop => nil).first
     
