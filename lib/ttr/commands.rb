@@ -2,7 +2,7 @@ module Ttr
   def self.ttr_ls
     Slip.where(:stop => nil).each do |s|
       total_time, num_valid_slips = Ttr::count_slips(s.timesheet)
-    
+
       total_time_str = num_valid_slips ? " (+#{Ttr::readable_time(total_time)} on #{num_valid_slips} completed slips)" : ""
       desc = s.timesheet.description ? " (#{s.timesheet.description})" : ""
       puts "#{Ttr::readable_time(Time.now - s.start)} on timesheet #{s.timesheet.id}#{desc}#{total_time_str}"
@@ -11,19 +11,19 @@ module Ttr
       puts "No open slips."
     end
   end
-  
+
   def self.ttr_start(id, silence_output = false)
     if id
       ts = Timesheet.find_by_id(id)
     else
-      ts = Timesheet.create
+      ts = Timesheet.create({ description: Time.now.strftime("%Y-%m-%d") })
     end
-    
+
     slip = Slip.create
     slip.timesheet_id = ts.id
     slip.start = Time.now
     slip.save
-    
+
     puts "Started slip at #{slip.start} for timesheet #{ts.id}" unless silence_output
   end
 end
